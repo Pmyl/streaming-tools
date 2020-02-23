@@ -76,7 +76,7 @@ class Timer {
             this.times[2] += 1;
             this.times[3] -= 100;
         } else if (this.times[3] < 0) {
-            const amount = Math.floor(this.times[3] / 100);
+            const amount = Math.abs(Math.floor(this.times[3] / 100));
             this.times[2] -= amount;
             this.times[3] += amount * 100;
         }
@@ -85,7 +85,7 @@ class Timer {
             this.times[1] += 1;
             this.times[2] -= 60;
         } else if (this.times[2] < 0) {
-            const amount = Math.floor(this.times[2] / 60);
+            const amount = Math.abs(Math.floor(this.times[2] / 60));
             this.times[1] -= amount;
             this.times[2] += amount * 60;
         }
@@ -94,7 +94,7 @@ class Timer {
             this.times[0] += 1;
             this.times[1] -= 60;
         } else if (this.times[1] < 0) {
-            const amount = Math.floor(this.times[1] / 60);
+            const amount = Math.abs(Math.floor(this.times[1] / 60));
             this.times[0] -= amount;
             this.times[1] += amount * 60;
         }
