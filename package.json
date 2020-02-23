@@ -1,0 +1,20 @@
+{
+  "name": "streaming-tools",
+  "version": "1.0.0",
+  "description": "Repo with streaming tools and helpers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cpx timer/**/* build/timer"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pmyl/streaming-tools.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pmyl/streaming-tools/issues"
+  },
+  "homepage": "https://github.com/Pmyl/streaming-tools#readme"
+}
