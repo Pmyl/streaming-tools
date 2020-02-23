@@ -138,55 +138,55 @@ document.addEventListener("DOMContentLoaded", () => {
     let times = timer.times.slice();
 
     document.addEventListener("keydown", (event) => {
-        switch(event.code) {
-            case "Space":
+        switch(event.keyCode) {
+            case 32:
                 timer.action();
                 times = timer.times.slice();
                 break;
-            case "KeyR":
+            case 82:
                 timer.reset();
                 break;
-            case "Digit1":
-            case "Numpad1":
-                editTime(1);
-                break;
-            case "Digit2":
-            case "Numpad2":
-                editTime(2);
-                break;
-            case "Digit3":
-            case "Numpad3":
-                editTime(3);
-                break;
-            case "Digit4":
-            case "Numpad4":
-                editTime(4);
-                break;
-            case "Digit5":
-            case "Numpad5":
-                editTime(5);
-                break;
-            case "Digit6":
-            case "Numpad6":
-                editTime(6);
-                break;
-            case "Digit7":
-            case "Numpad7":
-                editTime(7);
-                break;
-            case "Digit8":
-            case "Numpad8":
-                editTime(8);
-                break;
-            case "Digit9":
-            case "Numpad9":
-                editTime(9);
-                break;
-            case "Digit0":
-            case "Numpad0":
+            case 48:
+            case 96:
                 editTime(0);
                 break;
-            case "Delete":
+            case 49:
+            case 97:
+                editTime(1);
+                break;
+            case 50:
+            case 98:
+                editTime(2);
+                break;
+            case 51:
+            case 99:
+                editTime(3);
+                break;
+            case 52:
+            case 100:
+                editTime(4);
+                break;
+            case 53:
+            case 101:
+                editTime(5);
+                break;
+            case 54:
+            case 102:
+                editTime(6);
+                break;
+            case 55:
+            case 103:
+                editTime(7);
+                break;
+            case 56:
+            case 104:
+                editTime(8);
+                break;
+            case 57:
+            case 105:
+                editTime(9);
+                break;
+            case 46:
                 clearTime();
                 break;
         }
