@@ -9,20 +9,21 @@ class Timer {
     this.hasToShowMilliseconds = true;
     this.times = [];
     this.initialTimes = [0, 5, 0, 0];
+    this.currentStringTime = '';
     this.cbs = [];
     this.mode = Mode.Timer;
     this.reset();
-    this.update();
+    this.updateTime();
   }
 
   reset() {
     this.times = this.initialTimes.slice();
-    this.update();
+    this.updateTime();
   }
 
   showMilliseconds(show) {
     this.hasToShowMilliseconds = show;
-    this.update();
+    this.updateTime();
   }
 
   setTime(times) {
@@ -32,12 +33,12 @@ class Timer {
     this.times[2] = Math.min(60, times[2]);
     this.times[3] = times[3];
     this.initialTimes = this.times.slice();
-    this.update();
+    this.updateTime();
   }
 
   setToZero() {
     this.times = [0, 0, 0, 0];
-    this.update();
+    this.updateTime();
   }
 
   startStop() {
@@ -70,7 +71,7 @@ class Timer {
     if (!this.running) return;
     this.calculate(timestamp);
     this.time = timestamp;
-    this.update();
+    this.updateTime();
     requestAnimationFrame(this.step.bind(this));
   }
 
@@ -130,14 +131,22 @@ class Timer {
 
   onUpdate(cb) {
     this.cbs.push(cb);
-    this.update();
+    this.notify(this.currentStringTime, [cb]);
   }
 
-  update() {
+  updateTime() {
     const stringTime = this.format(this.times);
+    if (this.currentStringTime === stringTime) {
+      return;
+    }
 
-    for(let i = 0; i < this.cbs.length; i++) {
-      this.cbs[i](stringTime);
+    this.currentStringTime = stringTime;
+    this.notify(stringTime, this.cbs);
+  }
+
+  notify(stringTime, cbs) {
+    for(let i = 0; i < cbs.length; i++) {
+      cbs[i](stringTime);
     }
   }
 
@@ -152,6 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
   timer.showMilliseconds(false);
 
   timer.onUpdate((time) => {
+    console.log("OnUpdate", time);
     timerSpan.innerHTML = time;
   });
 
